@@ -3,9 +3,7 @@ Here’s the updated description including the mention of HTML, CSS, and JavaScr
 
 
 
+
 <p align="center">
-  <video width="600" autoplay muted loop>
-    <source src=""C:\Users\lenov\OneDrive\Desktop\form.mp4"" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
+  <img src="C:\Users\lenov\Downloads\form.gif" alt="Demo" />
 </p>
