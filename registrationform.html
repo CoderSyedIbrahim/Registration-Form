@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      /* background-image: url('https://th.bing.com/th/id/OIP.LJg59LWYsRN7QyVlgn-nWQHaEK?pid=ImgDet&rs=1'); */
+      color: rgb(54, 49, 203);
+      background-size: cover;
+      padding: 100px;
+    }
+    table {
+      padding: 20px;
+      border-radius: 15px;
+      margin-top: 20px;
+
+    }
+    marquee {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+<marquee behavior="scroll" direction="left" scrollamount="4" style="background-color: #fff3cd; color: #664d03; font-weight: bold; padding: 10px; border-bottom: 2px solid #ffc107;">
+  🎓 Registration Open for 2025 Batch! | 🕐 Deadline: May 31st | 🎁 Bonus Worth ₹10,000/- | 📢 Hurry Up!
+</marquee>
+
+  <center>
+    <h1><u>Registration Form</u></h1>
+    <form id="registrationForm">
+      <table>
+        <tr>
+          <td><label for="name">Name:</label></td>
+          <td><input type="text" id="name" name="name" class="form-control" required></td>
+        </tr>
+        <tr>
+          <td><label for="phone">Phone Number:</label></td>
+          <td><input type="tel" id="phone" name="phone" class="form-control" required></td>
+        </tr>
+        <tr>
+          <td><label for="email">Email ID:</label></td>
+          <td><input type="email" id="email" name="email" class="form-control" required></td>
+        </tr>
+        <tr>
+          <td><label for="password">Password:</label></td>
+          <td><input type="password" id="password" name="password" class="form-control" required></td>
+        </tr>
+        <tr>
+          <td>Gender:</td>
+          <td>
+            <input type="radio" name="gender" value="Male" required> Male
+            <input type="radio" name="gender" value="Female"> Female
+          </td>
+        </tr>
+        <tr>
+          <td><label for="dob">Date of Birth:</label></td>
+          <td><input type="date" id="dob" name="dob" class="form-control" required></td>
+        </tr>
+        <tr>
+          <td>Hobbies:</td>
+          <td>
+            <input type="checkbox" name="hobbies" value="Singing"> Singing
+            <input type="checkbox" name="hobbies" value="Dancing"> Dancing
+            <input type="checkbox" name="hobbies" value="Playing"> Playing
+            <input type="checkbox" name="hobbies" value="Riding"> Riding
+          </td>
+        </tr>
+        <tr>
+          <td><label for="qualification">Education Qualification:</label></td>
+          <td>
+            <select id="qualification" name="qualification" class="form-control" required>
+              <option value="">Select option</option>
+              <option value="10+2">10+2</option>
+              <option value="Graduation">Graduation</option>
+              <option value="Post Graduation">Post Graduation</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="address">Address:</label></td>
+          <td><textarea rows="5" cols="30" id="address" name="address" placeholder="Enter your address" class="form-control" required></textarea></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="text-center">
+            <button type="button" class="btn btn-primary" onclick="handleSubmit()">Submit</button>
+            <button type="reset" class="btn btn-danger">Reset</button>
+            <button type="button" class="btn btn-secondary" onclick="saveInfo()">Save Info</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </center>
+  <marquee behavior="scroll" direction="right" scrollamount="5" style="background-color: #f8d7da; color: #842029; font-weight: bold; padding: 8px; border-top: 2px solid #f5c2c7;">
+  ❌ Final Call! Limited Seats Left – Register Before May 31st to Secure Your Bonus!
+</marquee>
+
+
+  <script>
+    function handleSubmit() {
+      const form = document.getElementById("registrationForm");
+      const data = new FormData(form);
+      const entries = {};
+
+      for (let [key, value] of data.entries()) {
+        if (key === 'hobbies') {
+          if (!entries[key]) entries[key] = [];
+          entries[key].push(value);
+        } else {
+          entries[key] = value;
+        }
+      }
+
+      console.log("Form Submitted:");
+      console.table(entries);
+      alert("Form submitted successfully! Check console for data.");
+    }
+
+    function saveInfo() {
+      const form = document.getElementById("registrationForm");
+      const data = new FormData(form);
+      const saveData = {};
+
+      for (let [key, value] of data.entries()) {
+        if (key === 'hobbies') {
+          if (!saveData[key]) saveData[key] = [];
+          saveData[key].push(value);
+        } else {
+          saveData[key] = value;
+        }
+      }
+
+      localStorage.setItem("registrationData", JSON.stringify(saveData));
+      alert("Info saved locally. You can check it in localStorage.");
+    }
+  </script>
+
+</body>
+</html>
